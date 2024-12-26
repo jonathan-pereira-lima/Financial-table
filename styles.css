@@ -1,8 +1,11 @@
 /* Estilo para a tabela */
 table {
-    width: 100%;
+    width: 50%;
     border-collapse: collapse;
     margin: 20px 0;
+    max-height: 300px;  /* Define a altura máxima da tabela */
+    overflow-y: auto;   /* Adiciona a rolagem vertical se o conteúdo ultrapassar o limite */
+    display: block;     /* Faz com que a tabela se comporte como um bloco e permita o overflow */
 }
 
 th, td {
@@ -28,7 +31,7 @@ tr:hover {
 .input-container {
     display: flex;
     flex-direction: column;  /* Organiza os elementos em uma coluna */
-    align-items: flex-start; /* Alinha os itens à esquerda */
+    align-items: center;     /* Alinha os itens no centro */
     gap: 10px;  /* Espaço entre os campos */
     margin-top: 20px; /* Espaço acima dos campos */
 }
@@ -58,4 +61,73 @@ tr:hover {
 
 .input-container button:hover {
     background-color: #45a049;
+}
+
+/* Garantir que o body ocupe toda a tela e centralize o conteúdo */
+body {
+    display: flex;
+    justify-content: center;  /* Alinha horizontalmente no centro */
+    align-items: center;      /* Alinha verticalmente no centro */
+    height: 100vh;            /* A altura é a altura total da tela */
+    margin: 0;                /* Remove margens padrão */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Estilo para o contêiner */
+.container {
+    display: flex;
+    flex-direction: column;  /* Coloca a tabela e os campos de entrada na vertical */
+    align-items: center;     /* Centraliza a tabela e os campos */
+    width: 80%;              /* Limita a largura do conteúdo */
+    max-width: 800px;        /* Largura máxima para não ficar muito largo */
+    position: relative;      /* Necessário para posicionar os botões nas extremidades */
+}
+
+/* Estilo para os botões de navegação */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: black;
+    background: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.arrow.left {
+    left: 10px; /* Posiciona o botão à esquerda */
+}
+
+.arrow.right {
+    right: 10px; /* Posiciona o botão à direita */
+}
+
+/* Estilo para a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
 }
