@@ -44,7 +44,7 @@ tr:hover {
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 100%; /* Faz com que o input ocupe a largura total */
-    max-width: 300px; /* Limita a largura máxima dos inputs */
+    max-width: 380px; /* Limita a largura máxima dos inputs */
 }
 
 /* Estilo para o botão */
@@ -85,27 +85,6 @@ body {
     position: relative;      /* Necessário para posicionar os botões nas extremidades */
 }
 
-/* Estilo para os botões de navegação */
-.arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(190px);
-    font-size: 2rem;
-    color: black;
-    background: white;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    z-index: 10;
-}
-
-.arrow.left {
-    left: 10px; /* Posiciona o botão à esquerda */
-}
-
-.arrow.right {
-    right: 10px; /* Posiciona o botão à direita */
-}
 
 /* Estilo para a tabela */
 table {
@@ -114,21 +93,3 @@ table {
     margin: 20px 0;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
-th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tr:hover {
-    background-color: #f1f1f1;
-}
