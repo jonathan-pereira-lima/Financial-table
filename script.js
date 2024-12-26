@@ -49,11 +49,54 @@ if (addRowButton) {
             <td>${data}</td>
             <td>${valor.toFixed(2)}</td>
             <td>${(ultimoTotal + valor).toFixed(2)}</td>
+            <td><button class="delete-btn">-</button></td> <!-- Botão de excluir -->
         `;
+
+        // Adicionar evento de excluir para o botão de cada linha
+        novaLinha.querySelector('.delete-btn').addEventListener('click', () => {
+            tabela.deleteRow(novaLinha.rowIndex - 1); // Remove a linha
+            atualizarTotal(); // Atualiza os totais da tabela
+        });
 
         // Limpar campos de entrada
         document.getElementById('descricao').value = '';
         document.getElementById('data').value = '';
         document.getElementById('valor').value = '';
+
+        // Ordenar as linhas por data
+        ordenarPorData();
     });
+}
+
+// Função para atualizar o total da coluna "Total"
+function atualizarTotal() {
+    const tabela = document.getElementById('tabelaValores').querySelector('tbody');
+    let total = 0;
+
+    Array.from(tabela.rows).forEach((linha, index) => {
+        const valor = parseFloat(linha.cells[2].textContent);
+        total += valor;
+
+        linha.cells[3].textContent = total.toFixed(2); // Atualiza o total da linha
+    });
+}
+
+// Função para ordenar as linhas da tabela por data
+function ordenarPorData() {
+    const tabela = document.getElementById('tabelaValores').querySelector('tbody');
+    const linhas = Array.from(tabela.rows);
+
+    // Ordena as linhas pela data (coluna 2)
+    linhas.sort((a, b) => {
+        const dataA = new Date(a.cells[1].textContent);
+        const dataB = new Date(b.cells[1].textContent);
+
+        return dataA - dataB; // Ordenação crescente
+    });
+
+    // Reinsere as linhas ordenadas na tabela
+    linhas.forEach(linha => tabela.appendChild(linha));
+
+    // Atualiza os totais após a ordenação
+    atualizarTotal();
 }
