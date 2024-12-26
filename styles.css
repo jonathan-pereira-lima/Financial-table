@@ -1,60 +1,14 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-}
-
-.container {
-    display: flex;
-    width: 500vw; /* 5 telas * 100vw */
-    height: 100vh;
-    transition: transform 0.5s ease;
-}
-
-.screen {
-    flex: 0 0 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f4f4f4;
-}
-
-.arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    color: black;
-    background: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-}
-
-.arrow.left {
-    left: 10px;
-}
-
-.arrow.right {
-    right: 10px;
-}
-
+/* Estilo para a tabela */
 table {
-    width: 90%;
+    width: 100%;
     border-collapse: collapse;
-    margin: 20px auto;
+    margin: 20px 0;
 }
 
 th, td {
     border: 1px solid #ddd;
     padding: 8px;
-    text-align: center;
+    text-align: left;
 }
 
 th {
@@ -68,4 +22,40 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #f1f1f1;
+}
+
+/* Estilo para o contêiner de inputs abaixo da tabela */
+.input-container {
+    display: flex;
+    flex-direction: column;  /* Organiza os elementos em uma coluna */
+    align-items: flex-start; /* Alinha os itens à esquerda */
+    gap: 10px;  /* Espaço entre os campos */
+    margin-top: 20px; /* Espaço acima dos campos */
+}
+
+/* Estilo para os inputs */
+.input-container input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Faz com que o input ocupe a largura total */
+    max-width: 300px; /* Limita a largura máxima dos inputs */
+}
+
+/* Estilo para o botão */
+.input-container button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;  /* Faz com que o botão ocupe toda a largura disponível */
+    max-width: 300px; /* Limita a largura máxima do botão */
+}
+
+.input-container button:hover {
+    background-color: #45a049;
 }
