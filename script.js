@@ -56,6 +56,7 @@ if (addRowButton) {
         novaLinha.querySelector('.delete-btn').addEventListener('click', () => {
             tabela.deleteRow(novaLinha.rowIndex - 1); // Remove a linha
             atualizarTotal(); // Atualiza os totais da tabela
+            salvarNoLocalStorage(); // Salva a tabela após exclusão
         });
 
         // Limpar campos de entrada
@@ -65,6 +66,9 @@ if (addRowButton) {
 
         // Ordenar as linhas por data
         ordenarPorData();
+
+        // Salvar no localStorage
+        salvarNoLocalStorage();
     });
 }
 
@@ -100,3 +104,44 @@ function ordenarPorData() {
     // Atualiza os totais após a ordenação
     atualizarTotal();
 }
+
+// Função para salvar os dados no localStorage
+function salvarNoLocalStorage() {
+    const tabela = document.getElementById('tabelaValores').querySelector('tbody');
+    const dados = Array.from(tabela.rows).map(row => ({
+        descricao: row.cells[0].textContent,
+        data: row.cells[1].textContent,
+        valor: parseFloat(row.cells[2].textContent),
+        total: parseFloat(row.cells[3].textContent)
+    }));
+    localStorage.setItem('tabelaValores', JSON.stringify(dados));
+}
+
+// Função para carregar os dados do localStorage
+function carregarDoLocalStorage() {
+    const dados = JSON.parse(localStorage.getItem('tabelaValores')) || [];
+    const tabela = document.getElementById('tabelaValores').querySelector('tbody');
+
+    dados.forEach(item => {
+        const novaLinha = tabela.insertRow();
+        novaLinha.innerHTML = `
+            <td>${item.descricao}</td>
+            <td>${item.data}</td>
+            <td>${item.valor.toFixed(2)}</td>
+            <td>${item.total.toFixed(2)}</td>
+            <td><button class="delete-btn">-</button></td>
+        `;
+
+        // Adicionar evento de excluir para o botão de cada linha
+        novaLinha.querySelector('.delete-btn').addEventListener('click', () => {
+            tabela.deleteRow(novaLinha.rowIndex - 1); // Remove a linha
+            atualizarTotal(); // Atualiza os totais da tabela
+            salvarNoLocalStorage(); // Salva a tabela após exclusão
+        });
+    });
+
+    atualizarTotal();
+}
+
+// Carrega os dados do localStorage ao carregar a página
+document.addEventListener('DOMContentLoaded', carregarDoLocalStorage);

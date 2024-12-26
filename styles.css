@@ -3,7 +3,8 @@ table {
     width: 50%;
     border-collapse: collapse;
     margin: 20px 0;
-    max-height: 300px;  /* Define a altura máxima da tabela */
+    max-height: 240px;  /* Define a altura máxima da tabela */
+    min-height: 240px;
     overflow-y: auto;   /* Adiciona a rolagem vertical se o conteúdo ultrapassar o limite */
     display: block;     /* Faz com que a tabela se comporte como um bloco e permita o overflow */
 }
@@ -56,7 +57,7 @@ tr:hover {
     border-radius: 4px;
     cursor: pointer;
     width: 100%;  /* Faz com que o botão ocupe toda a largura disponível */
-    max-width: 300px; /* Limita a largura máxima do botão */
+    max-width: 150px; /* Limita a largura máxima do botão */
 }
 
 .input-container button:hover {
@@ -88,12 +89,12 @@ body {
 .arrow {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(190px);
     font-size: 2rem;
     color: black;
     background: white;
     border: none;
-    padding: 10px;
+    padding: 5px;
     cursor: pointer;
     z-index: 10;
 }
